@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Weather
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 def show(Request) :
@@ -60,6 +62,8 @@ def summary(Request) :
     average_humidity = []
     time_begin = []
     time_end = []
+    id_begin_record = []
+    id_end_record = []
     i = 0
     size = 0
     for record in all_records :
@@ -68,12 +72,14 @@ def summary(Request) :
         i += 1
         if i == 1 :
             time_begin.append(record.date)
+            id_begin_record.append(record.id)
         if i == 10 :
             sum_temprature /= 10.0
             sum_humidity   /= 10.0
             average_temprature.append(sum_temprature)
             average_humidity.append(sum_humidity)
             time_end.append(record.date)
+            id_end_record.append(record.id)
             sum_temprature = 0.0
             sum_humidity = 0.0
             i = 0
@@ -98,6 +104,18 @@ def summary(Request) :
         html += str(time_begin[i]) + "</td>"
         html += "<td style=\"border: 1px solid black;\">"
         html += str(time_end[i]) + "</td>"
+        url = "/deleteBlock/" + str(id_begin_record[i])
+        url += "/" + str(id_end_record[i]) + "/"
+        html += "<td style=\"border: 1px solid black;\">"
+        html += '<a href="' + url + '"> delete </a>'
+        html += "</td>"
         html += "</tr>"
     html += "</table>"
     return HttpResponse(html)
+
+def deleteBlock(request, begin_id, end_id) :
+    begin_id = int(begin_id)
+    end_id = int(end_id)
+    for i in range(begin_id,end_id+1) :
+        Weather.objects.filter(id=i).delete()
+    return HttpResponse("OK")

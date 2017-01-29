@@ -22,8 +22,6 @@ from  MyApp import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^show/', views.show),
-    url(r'^summary/', views.summary),    
+    url(r'^summary/', views.summary),
+    url(r'^deleteBlock/(\d+)/(\d+)/$', views.deleteBlock),
 ]
-
-#if settings.DEBUG :
-#    urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
