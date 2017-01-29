@@ -20,10 +20,10 @@ def show(Request) :
         if prev_record != None :
             if record.temprature < prev_record.temprature :
                 html += "<td style=\"border: 1px solid black;\">"
-                html += "<img src=\"/home/Desktop/down_green.png\"/>" + "</td>"
+                html += "<img src=\"https://c1.staticflickr.com/1/573/32596254665_fe5e8d7509_t.jpg\"/>" + "</td>"
             elif record.temprature > prev_record.temprature :
                 html += "<td style=\"border: 1px solid black;\">"
-                html += "<img src=\"/home/Desktop/up_red.png\"/>" + "</td>"
+                html += "<img src=\"https://c1.staticflickr.com/1/676/32443177132_c460840e16_t.jpg\"/>" + "</td>"
             else :
                 html += "<td style=\"border: 1px solid black;\">" + "</td>"
         else :
@@ -38,10 +38,10 @@ def show(Request) :
         if prev_record != None :
             if record.humidity < prev_record.humidity :
                 html += "<td style=\"border: 1px solid black;\">"
-                html += "<img src=\"/home/Desktop/down_green.png\"/>" + "</td>"
+                html += "<img src=\"https://c1.staticflickr.com/1/573/32596254665_fe5e8d7509_t.jpg\"/>" + "</td>"
             elif record.humidity > prev_record.humidity :
                 html += "<td style=\"border: 1px solid black;\">"
-                html += "<img src=\"/home/Desktop/up_red.png\"/>" + "</td>"
+                html += "<img src=\"https://c1.staticflickr.com/1/676/32443177132_c460840e16_t.jpg\"/>" + "</td>"
             else :
                 html += "<td style=\"border: 1px solid black;\">" + "</td>"
         else :
